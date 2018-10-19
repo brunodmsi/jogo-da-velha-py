@@ -19,10 +19,14 @@ def salvar_vitoria(jogo,ganhador):
 
 def contar_jogadas():
     num=0
-    f=open('jogadas.txt','r')
-    for l in f:
-        num+=1
-    return num
+    try:
+        f=open('jogadas.txt','r')
+        for l in f:
+            num+=1
+        return num
+    except IOError:
+        f=open('jogadas.txt','w')
+        return 0
 
 def aleatorio():
     linhas=open('jogadas.txt').read().splitlines()
